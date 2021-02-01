@@ -12,7 +12,7 @@ ln -s /usr/bin/pip3 /usr/bin/pip
 echo 'Atualizando pip'
 pip install --upgrade pip
 echo 'Instalando poetry'
-pip install poetry
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 echo 'Instalando Vim plug'
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
