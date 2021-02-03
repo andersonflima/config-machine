@@ -37,7 +37,8 @@ apt install git-flow
 echo 'Etapa de configuracao do git user.name e user.email'
 
 name= read -r -p "Digite seu nome: " input
-email= read -r -p "Digite seu email: " input
+echo 'Digite seu email: '
+read email
 
 if [$name -ne ''] 
 then
