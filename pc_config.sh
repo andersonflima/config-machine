@@ -30,6 +30,8 @@ echo 'Validando status do servico'
 service mongodb status
 echo 'Instalando poetry'
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+echo 'configurando poetry'
+source $HOME/.poetry/env
 echo 'Instalando Git'
 apt install git
 echo 'Instalando Git flow'
