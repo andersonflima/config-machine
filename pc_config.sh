@@ -2,6 +2,8 @@
 
 echo 'Atualizando'
 apt update
+echo 'Instalando gdebi'
+apt install gdebi-core
 echo 'Instalando python3.8 e python3-pip'
 apt install python3.8 && apt install python3-pip 
 echo 'Movendo a versao antiga do python pre instalada para add a nova'
@@ -55,6 +57,9 @@ then
 else
 	echo 'Nao foi possivel configurar seu git'
 fi
+echo 'Instalando hyper Terminal'
+wget - O hyper_3.0.2 https://releases.hyper.is/download/deb
+gdebi hyper_3.0.2
 
 echo 'Instalando spotify'
 curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
