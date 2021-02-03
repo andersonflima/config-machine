@@ -60,7 +60,7 @@ fi
 echo 'Instalando hyper Terminal'
 wget - O hyper_3.0.2 https://releases.hyper.is/download/deb
 gdebi hyper_3.0.2
-
+rm hyper_3.0.2
 echo 'Instalando spotify'
 curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
