@@ -11,8 +11,6 @@ ln -s /usr/bin/python3.8 /usr/bin/python
 ln -s /usr/bin/pip3 /usr/bin/pip
 echo 'Atualizando pip'
 pip install --upgrade pip
-echo 'Instalando poetry'
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 echo 'Instalando Vim plug'
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -30,6 +28,8 @@ echo 'Restarando servico do mongodb'
 sevice mongodb restart
 echo 'Validando status do servico'
 service mongodb status
+echo 'Instalando poetry'
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 echo 'Instalando Git'
 apt install git
 echo 'Instalando Git flow'
