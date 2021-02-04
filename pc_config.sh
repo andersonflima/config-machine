@@ -73,6 +73,10 @@ echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sou
 
 apt update && apt install -y spotify-client
 
+echo 'Download vimrc file'
+wget https://raw.githubusercontent.com/andersonflima/config-machine/master/.vimrc
+echo 'Download zshrc file'
+wget https://raw.githubusercontent.com/andersonflima/config-machine/master/.zshrc
 
 cp .vimrc $HOME/.
 cp .zshrc $HOME/.
