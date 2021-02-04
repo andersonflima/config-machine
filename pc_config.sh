@@ -3,6 +3,9 @@
 
 echo 'Este arquivo instala: gdebi, python3.8, pip, vim plug, fira code font, nodejs, mongodb, npm, git, git flow e spotify'
 
+echo 'Deseja instalar o spotify s/n'
+read spotify
+
 echo 'Para configurar o git e preciso informar um nome e email para definir as configuracoes globais'
 
 echo "Digite seu nome: "
@@ -67,12 +70,21 @@ fi
 echo 'Instalando oh-my-zsh'
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-echo 'Instalando spotify'
-curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
-echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+if [$spotify -eq 's']
+then
+	echo 'Instalando spotify'
+	curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
+	echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 
-apt update && apt install -y spotify-client
+	apt install -y spotify-client
+fi
 
+echo 'Download vimrc file'
+wget https://raw.githubusercontent.com/andersonflima/config-machine/master/.vimrc
+echo 'Download zshrc file'
+wget https://raw.githubusercontent.com/andersonflima/config-machine/master/.zshrc
 
 cp .vimrc $HOME/.
 cp .zshrc $HOME/.
+
+apt update
