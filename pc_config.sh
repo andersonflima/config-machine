@@ -1,11 +1,21 @@
 #!/bin/bash
 
+
+echo 'Este arquivo instala: gdebi, python3.8, pip, vim plug, fira code font, nodejs, mongodb, npm, git, git flow e spotify'
+
+echo 'Para configurar o git e preciso informar um nome e email para definir as configuracoes globais'
+
+echo "Digite seu nome: "
+read name
+echo 'Digite seu email: '
+read email
+
 echo 'Atualizando'
 apt update
 echo 'Instalando gdebi'
-apt install gdebi-core
+apt install -y  gdebi-core
 echo 'Instalando python3.8 e python3-pip'
-apt install python3.8 && apt install python3-pip 
+apt install -y  python3.8 && apt install -y  python3-pip 
 echo 'Movendo a versao antiga do python pre instalada para add a nova'
 mv /usr/bin/python /usr/bin/python_old
 echo 'Criando atalho do python3.8 como default python, criando atalho do pip3 como default pip'
@@ -17,13 +27,13 @@ echo 'Instalando Vim plug'
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo 'Instalando Vim'
-apt install vim
+apt install -y  vim
 echo 'Instalando font fira code'
-apt install fonts-firacode
+apt install -y  fonts-firacode
 echo 'Instalando Nodejs'
-apt install nodejs
+apt install -y  nodejs
 echo 'Instalando NPM'
-apt install npm 
+apt install -y  npm 
 echo 'Instalando mongodb'
 apt install -y mongodb
 echo 'Restarando servico do mongodb'
@@ -35,14 +45,10 @@ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poet
 echo 'configurando poetry'
 source $HOME/.poetry/env
 echo 'Instalando Git'
-apt install git
+apt install -y  git
 echo 'Instalando Git flow'
-apt install git-flow
+apt install -y  git-flow
 echo 'Etapa de configuracao do git user.name e user.email'
-
-name= read -r -p "Digite seu nome: " input
-echo 'Digite seu email: '
-read email
 
 if [$name -ne ''] 
 then
@@ -57,13 +63,16 @@ then
 else
 	echo 'Nao foi possivel configurar seu git'
 fi
-echo 'Instalando hyper Terminal'
-wget - O hyper_3.0.2 https://releases.hyper.is/download/deb
-gdebi hyper_3.0.2
-rm hyper_3.0.2
-hyper i hyper-font-ligatures
+
+echo 'Instalando oh-my-zsh'
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 echo 'Instalando spotify'
 curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 
-apt update && sudo apt install spotify-client
+apt update && apt install -y spotify-client
+
+
+cp .vimrc $HOME/.
+cp .zshrc $HOME/.
