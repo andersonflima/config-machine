@@ -3,15 +3,12 @@
 
 echo 'Este arquivo instala: gdebi, python3.8, pip, vim plug, fira code font, nodejs, mongodb, npm, git, git flow e spotify'
 
-echo 'Deseja instalar o spotify s/n'
-read spotify
+read -p 'Deseja instalar o spotify s/n' spotify
 
 echo 'Para configurar o git e preciso informar um nome e email para definir as configuracoes globais'
 
-echo "Digite seu nome: "
-read name
-echo 'Digite seu email: '
-read email
+read -p "Digite seu nome: " name
+read -p 'Digite seu email: ' email
 
 echo 'Atualizando'
 apt update
