@@ -53,6 +53,7 @@ echo 'Etapa de configuracao do git user.name e user.email'
 if [$name -ne ''] 
 then
 	git config --global user.name=$name
+	git config --global pull.rebase false
 else
 	echo 'Nao foi possivel configurar seu git'
 fi
@@ -63,6 +64,7 @@ then
 else
 	echo 'Nao foi possivel configurar seu git'
 fi
+
 
 echo 'Instalando oh-my-zsh'
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
