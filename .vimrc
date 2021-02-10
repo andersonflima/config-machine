@@ -63,3 +63,4 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 set guifont=Fira\ Code\ 12
+set number
