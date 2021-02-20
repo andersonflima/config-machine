@@ -3,17 +3,30 @@
 
 echo 'Este arquivo instala: gdebi, python3.8, pip, vim plug, fira code font, nodejs, mongodb, npm, git, git flow e spotify'
 
-read -p 'Deseja instalar o spotify s/n' spotify
+read -p 'Deseja instalar o spotify s/n ' spotify
 
+read -p 'Deseja instalar o git s/n ' git_config 
+if [$git_config -eq 's']
+then
 echo 'Para configurar o git e preciso informar um nome e email para definir as configuracoes globais'
 
 read -p "Digite seu nome: " name
 read -p 'Digite seu email: ' email
+fi
+
+read -p 'Deseja configurar o python  s/n ' config_python 
+
+read -p 'Deseja configurar o vim  s/n ' config_vim 
+
+read -p 'Deseja configurar o MEAN stack  s/n ' config_mean 
+
 
 echo 'Atualizando'
 apt update
 echo 'Instalando gdebi'
 apt install -y  gdebi-core
+if [$config_python -eq 's']
+then
 echo 'Instalando python3.8 e python3-pip'
 apt install -y  python3.8 && apt install -y  python3-pip 
 echo 'Movendo a versao antiga do python pre instalada para add a nova'
@@ -23,13 +36,24 @@ ln -s /usr/bin/python3.8 /usr/bin/python
 ln -s /usr/bin/pip3 /usr/bin/pip
 echo 'Atualizando pip'
 pip install --upgrade pip
+echo 'Instalando poetry'
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+echo 'configurando poetry'
+source $HOME/.poetry/env
+
+fi
+if [$vim_config -eq 's']
+then
 echo 'Instalando Vim plug'
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo 'Instalando Vim'
 apt install -y  vim
+fi
 echo 'Instalando font fira code'
 apt install -y  fonts-firacode
+if [$config_mean -eq 's']
+then
 echo 'Instalando Nodejs'
 apt install -y  nodejs
 echo 'Instalando NPM'
@@ -40,16 +64,15 @@ echo 'Restarando servico do mongodb'
 sevice mongodb restart
 echo 'Validando status do servico'
 service mongodb status
-echo 'Instalando poetry'
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
-echo 'configurando poetry'
-source $HOME/.poetry/env
+fi
 echo 'Instalando Git'
 apt install -y  git
 echo 'Instalando Git flow'
 apt install -y  git-flow
 echo 'Etapa de configuracao do git user.name e user.email'
 
+if [$git_config -eq 's']
+then
 if [$name -ne ''] 
 then
 	git config --global user.name=$name
@@ -64,7 +87,7 @@ then
 else
 	echo 'Nao foi possivel configurar seu git'
 fi
-
+fi
 
 echo 'Instalando oh-my-zsh'
 apt install -y zsh
