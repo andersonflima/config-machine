@@ -22,7 +22,6 @@ autocmd VimEnter *
 "-----------------------------------------
 silent! if plug#begin('~/.vim/plugged')
 Plug 'w0rp/ale'                 " linting plugin
-Plug 'morhetz/gruvbox'          " vim gruvbox color scheme
 Plug 'preservim/nerdtree'       " vim nerdtree folder tree 
 Plug 'airblade/vim-gitgutter'    " vim guitter git
 Plug 'haishanh/night-owl.vim'
@@ -30,7 +29,16 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'davidhalter/jedi-vim'
-call plug#end()
+Plug 'tpope/vim-surround' " Surrounding ysw)
+Plug 'tpope/vim-commentary' " For Commenting gcc & gc
+Plug 'vim-airline/vim-airline' " Status bar
+Plug 'ap/vim-css-color' " CSS Color Preview
+Plug 'rafi/awesome-vim-colorschemes' " Retro Scheme
+Plug 'neoclide/coc.nvim'  " Auto Completion
+Plug 'ryanoasis/vim-devicons' " Developer Icons
+Plug 'tc50cal/vim-terminal' " Vim Terminal
+Plug 'preservim/tagbar' " Tagbar for code navigation
+Plug 'terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 endif
 " vim-plug does not require any extra statement other than plug#begin()
 " and plug#end(). You can remove filetype off, filetype plugin indent on
@@ -62,6 +70,18 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-set guifont=Fira\ Code\ 12
-set number
-set autoindent
+:set guifont=Fira\ Code\ 12
+:set number
+:set autoindent
+:set encoding=UTF-8
+:set relativenumber
+:set tabstop=4
+:set shiftwidth=4
+:set smarttab
+:set softtabstop=4
+:set mouse=a
+:colorscheme jellybeans
+
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"
+
