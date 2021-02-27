@@ -20,7 +20,8 @@ autocmd VimEnter *
 "-----------------------------------------
 " Plugins
 "-----------------------------------------
-silent! if plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged')
+
 Plug 'w0rp/ale'                 " linting plugin
 Plug 'preservim/nerdtree'       " vim nerdtree folder tree 
 Plug 'airblade/vim-gitgutter'    " vim guitter git
@@ -39,7 +40,8 @@ Plug 'ryanoasis/vim-devicons' " Developer Icons
 Plug 'tc50cal/vim-terminal' " Vim Terminal
 Plug 'preservim/tagbar' " Tagbar for code navigation
 Plug 'terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
-endif
+
+call plug#end()
 " vim-plug does not require any extra statement other than plug#begin()
 " and plug#end(). You can remove filetype off, filetype plugin indent on
 " and syntax on from your .vimrc as they are automatically handled by
@@ -80,7 +82,6 @@ map <C-l> <C-w>l
 :set smarttab
 :set softtabstop=4
 :set mouse=a
-:colorscheme jellybeans
 
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
