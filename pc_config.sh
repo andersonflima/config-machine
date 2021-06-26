@@ -1,35 +1,36 @@
 #!/bin/bash
 
 
-echo 'Este arquivo instala: gdebi, python3.8, pip, vim plug, fira code font, nodejs, mongodb, npm, git, git flow e spotify'
-
-read -p 'Deseja instalar o spotify s/n ' spotify
+echo 'Este sehll pode instalar: gdebi, python3.8, pip, vim plug, fira code font, nodejs, mongodb, npm, git, git flow'
 
 read -p 'Deseja instalar o git s/n ' git_config 
 if [$git_config -eq 's']
 then
 echo 'Para configurar o git e preciso informar um nome e email para definir as configuracoes globais'
 
-read -p "Digite seu nome: " name
-read -p 'Digite seu email: ' email
+read -p "Digite seu nome para configuracao do git user.name: " name
+read -p 'Digite seu email para configuracao do git user.email: ' email
 fi
 
-read -p 'Deseja configurar o python  s/n ' config_python 
+read -p 'Deseja configurar o python s/n ' config_python 
 
 read -p 'Deseja configurar o vim  s/n ' config_vim 
 
 read -p 'Deseja configurar o MEAN stack  s/n ' config_mean 
 
 
-echo 'Atualizando'
+echo 'Atualizando dependencias e pacotes'
 apt update
-echo 'Instalando gdebi'
+
+echo 'Instalando gdebi - gerenciador de pactoes deb'
 apt install -y  gdebi-core
 if [$config_python -eq 's']
 then
+
 echo 'Instalando python3.8 e python3-pip'
-apt install -y  python3.8 && apt install -y  python3-pip 
-echo 'Movendo a versao antiga do python pre instalada para add a nova'
+apt install -y  python3.8 && apt install -y  python3-pip && apt install -y python3-dev 
+
+echo 'Movendo a versao antiga do python pre instalada para python_old'
 mv /usr/bin/python /usr/bin/python_old
 echo 'Criando atalho do python3.8 como default python, criando atalho do pip3 como default pip'
 ln -s /usr/bin/python3.8 /usr/bin/python
@@ -94,21 +95,14 @@ apt install -y zsh
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-if [$spotify -eq 's']
-then
-	echo 'Instalando spotify'
-	curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
-	echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-
-	apt install -y spotify-client
-fi
-
-echo 'Download vimrc file'
+echo 'Download vimrc file from my github'
 wget https://raw.githubusercontent.com/andersonflima/config-machine/master/.vimrc
-echo 'Download zshrc file'
+echo 'Download zshrc file from my github'
 wget https://raw.githubusercontent.com/andersonflima/config-machine/master/.zshrc
 
+echo "Overwriting your .vimrc and .zshrc with mines"
 cp .vimrc $HOME/.
 cp .zshrc $HOME/.
 
+echo "Running update again"
 apt update
