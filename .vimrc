@@ -39,6 +39,7 @@ Plug 'neoclide/coc.nvim'  " Auto Completion
 Plug 'tc50cal/vim-terminal' " Vim Terminal
 Plug 'preservim/tagbar' " Tagbar for code navigation
 Plug 'terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
+Plug 'justinmk/vim-sneak' " CTRL + N for multiple cursors
 
 call plug#end()
 " vim-plug does not require any extra statement other than plug#begin()
@@ -84,5 +85,6 @@ map <C-l> <C-w>l
 
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
+let g:sneak#label = 1
 
 :set completeopt-=preview " For No Previews
