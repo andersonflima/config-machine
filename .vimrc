@@ -85,6 +85,6 @@ map <C-l> <C-w>l
 
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
-let g:sneak#label = 1
+"let g:sneak#label = 1
 
 :set completeopt-=preview " For No Previews
