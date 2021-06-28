@@ -95,6 +95,13 @@ apt install -y zsh
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+
+echo "Instalando tema zsh"
+git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+
+echo "Criando link"
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+
 echo 'Download vimrc file from my github'
 wget https://raw.githubusercontent.com/andersonflima/config-machine/master/.vimrc
 echo 'Download zshrc file from my github'
